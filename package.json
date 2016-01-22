@@ -1,0 +1,75 @@
+{
+  "name": "provision-eslint",
+  "version": "0.0.0-development",
+  "description": "Provision Babel in your package.json",
+  "homepage": "http://packagesmith.github.io/provision-eslint",
+  "bugs": "http://github.com/packagesmith/provision-eslint/issues",
+  "license": "MIT",
+  "author": "Keith Cirkel (http://keithcirkel.co.uk)",
+  "files": [
+    "lib/"
+  ],
+  "main": "lib/index.js",
+  "bin": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "src": "src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/packagesmith/provision-eslint"
+  },
+  "scripts": {
+    "lint": "eslint $npm_package_directories_src",
+    "prepublish": "babel $npm_package_directories_src -d $npm_package_directories_lib",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "pretest": "npm run lint",
+    "test": "mocha --recursive test/ --compilers js:babel-register",
+    "watch": "npm run prepublish -- -w"
+  },
+  "config": {
+    "ghooks": {
+      "commit-msg": "validate-commit-msg",
+      "pre-commit": "npm t"
+    }
+  },
+  "babel": {
+    "compact": false,
+    "ignore": "node_modules",
+    "presets": [
+      "es2015",
+      "stage-2"
+    ],
+    "retainLines": true,
+    "sourceMaps": "inline"
+  },
+  "eslintConfig": {
+    "extends": [
+      "strict"
+    ],
+    "parser": "babel-eslint"
+  },
+  "dependencies": {
+    "lodash.defaultsdeep": "^4.1.0",
+    "packagesmith": "^1.1.0",
+    "packagesmith.formats.json": "^1.0.1",
+    "sort-package-json": "^1.1.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.5.1",
+    "babel-core": "^6.5.2",
+    "babel-eslint": "^4.1.8",
+    "babel-preset-es2015": "^6.5.0",
+    "babel-preset-stage-2": "^6.5.0",
+    "babel-register": "^6.5.2",
+    "chai": "^3.5.0",
+    "eslint": "^2.1.0",
+    "eslint-config-strict": "^8.2.0",
+    "eslint-plugin-filenames": "^0.2.0",
+    "ghooks": "^1.0.3",
+    "mocha": "^2.4.5",
+    "semantic-release": "^4.3.5",
+    "travis-after-all": "^1.4.4",
+    "validate-commit-msg": "^2.0.0"
+  }
+}
