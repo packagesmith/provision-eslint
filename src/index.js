@@ -4,15 +4,14 @@ import jsonFile from 'packagesmith.formats.json';
 import { runProvisionerSet } from 'packagesmith';
 import sortPackageJson from 'sort-package-json';
 const presetOptions = {
-  'strict': '^8.2.0',
-  'xo': '^0.10.1',
+  'strict': '^8.5.0',
+  'xo': '^0.12.0',
   'google': '^0.4.0',
   'standard': '^5.1.0',
-  'airbnb': '^5.0.1',
-  'semistandard': '^5.0.0',
+  'airbnb': '^6.1.0',
+  'semistandard': '^5.0.1',
   'defaults': '^9.0.0',
   'strongloop': '^1.0.2',
-  'simplified': '^1.2.2',
 };
 export function provisionEslint({
   eslintConfig = false,
@@ -42,7 +41,7 @@ export function provisionEslint({
             total[`eslint-config-${ preset.replace(/^eslint-config/, '') }`] = chosenPresets[preset];
             return total;
           }, {});
-        devDependencies.eslint = '^2.1.0';
+        devDependencies.eslint = '^2.3.0';
         const packageJson = {
           eslintConfig: eslintConfig || {
             extends: Object.keys(chosenPresets).map((preset) => preset.replace(/^eslint-config/, '')),
