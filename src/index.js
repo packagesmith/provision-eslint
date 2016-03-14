@@ -41,7 +41,7 @@ export function provisionEslint({
             total[`eslint-config-${ preset.replace(/^eslint-config/, '') }`] = chosenPresets[preset];
             return total;
           }, {});
-        devDependencies.eslint = '^2.3.0';
+        devDependencies.eslint = '^2.4.0';
         const packageJson = {
           eslintConfig: eslintConfig || {
             extends: Object.keys(chosenPresets).map((preset) => preset.replace(/^eslint-config/, '')),

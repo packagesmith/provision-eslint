@@ -59,7 +59,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.3.0',
+            'eslint': '^2.4.0',
             'eslint-config-strict': '^8.5.0',
           },
           eslintConfig: {
@@ -80,7 +80,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.3.0',
+            'eslint': '^2.4.0',
             'eslint-config-xo': '^0.12.0',
           },
           eslintConfig: {
@@ -101,7 +101,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.3.0',
+            'eslint': '^2.4.0',
             'eslint-config-xo': '^0.12.0',
           },
           eslintConfig: {
@@ -122,7 +122,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.3.0',
+            'eslint': '^2.4.0',
             'eslint-config-foo': '^1.2.3',
           },
           eslintConfig: {
@@ -152,7 +152,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.3.0',
+            'eslint': '^2.4.0',
           },
           eslintConfig: {
             rules: {
@@ -177,7 +177,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.3.0',
+            'eslint': '^2.4.0',
           },
           eslintConfig: {
             extends: [],
@@ -200,7 +200,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.3.0',
+            'eslint': '^2.4.0',
           },
           eslintConfig: {
             extends: [],
@@ -224,7 +224,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.3.0',
+            'eslint': '^2.4.0',
           },
           eslintConfig: {
             extends: [],
