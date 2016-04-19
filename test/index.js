@@ -75,6 +75,46 @@ describe('provisionEslint', () => {
         });
     });
 
+    it('overwrites already existing older versions of eslint', () => {
+      const packageJson = JSON.stringify({
+        devDependencies: {
+          eslint: '^1.2.3',
+        },
+      });
+      JSON.parse(subFunction(packageJson, { eslintPreset: 'strict' }))
+        .should.have.deep.property('devDependencies.eslint', eslintVersion);
+    });
+
+    it('does not overwrite already existing newer versions of eslint', () => {
+      const packageJson = JSON.stringify({
+        devDependencies: {
+          eslint: '^9.9.9',
+        },
+      });
+      JSON.parse(subFunction(packageJson, { eslintPreset: 'strict' }))
+        .should.have.deep.property('devDependencies.eslint', '^9.9.9');
+    });
+
+    it('overwrites already existing older versions of eslint preset', () => {
+      const packageJson = JSON.stringify({
+        devDependencies: {
+          'eslint-config-strict': '^1.2.3',
+        },
+      });
+      JSON.parse(subFunction(packageJson, { eslintPreset: 'strict' }))
+        .should.have.deep.property('devDependencies.eslint-config-strict', eslintVersions['eslint-config-strict']);
+    });
+
+    it('does not overwrite already existing newer versions of eslint preset', () => {
+      const packageJson = JSON.stringify({
+        devDependencies: {
+          'eslint-config-strict': '^9999.9999.9999',
+        },
+      });
+      JSON.parse(subFunction(packageJson, { eslintPreset: 'strict' }))
+        .should.have.deep.property('devDependencies.eslint-config-strict', '^9999.9999.9999');
+    });
+
     it('adds different `extends` and `devDependencies` when given different preset', () => {
       JSON.parse(subFunction('{}', { eslintPreset: 'xo' }))
         .should.deep.equal({

@@ -50,6 +50,7 @@
     "lodash.defaultsdeep": "^4.3.5",
     "packagesmith": "^1.1.2",
     "packagesmith.formats.json": "^1.0.1",
+    "semver-addons": "^1.0.0",
     "sort-package-json": "^1.4.0"
   },
   "devDependencies": {

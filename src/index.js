@@ -4,6 +4,7 @@ import { devDependencies as eslintVersions } from '../package.json';
 import jsonFile from 'packagesmith.formats.json';
 import { runProvisionerSet } from 'packagesmith';
 import sortPackageJson from 'sort-package-json';
+import { sortRange as sortSemverRanges } from 'semver-addons';
 const eslintVersion = eslintVersions.eslint;
 const presetOptions = {
   'strict': eslintVersions['eslint-config-strict'],
@@ -38,12 +39,14 @@ export function provisionEslint({
         if (typeof chosenPresets === 'string') {
           chosenPresets = { [chosenPresets]: presetOptions[chosenPresets] };
         }
+        const actualDevDependencies = contents.devDependencies || {};
         const devDependencies = Object.keys(chosenPresets)
           .reduce((total, preset) => {
-            total[`eslint-config-${ preset.replace(/^eslint-config/, '') }`] = chosenPresets[preset];
+            const key = `eslint-config-${ preset.replace(/^eslint-config/, '') }`;
+            total[key] = sortSemverRanges(chosenPresets[preset], actualDevDependencies[key] || '0.0.0').pop();
             return total;
           }, {});
-        devDependencies.eslint = eslintVersion;
+        devDependencies.eslint = sortSemverRanges(eslintVersion, actualDevDependencies.eslint || '0.0.0').pop();
         const packageJson = {
           eslintConfig: eslintConfig || {
             extends: Object.keys(chosenPresets).map((preset) => preset.replace(/^eslint-config/, '')),
