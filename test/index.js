@@ -1,6 +1,8 @@
 import chai from 'chai';
-chai.should();
+import { devDependencies as eslintVersions } from '../package.json';
 import provisionEslint from '../src/';
+chai.should();
+const eslintVersion = eslintVersions.eslint || 'NO VERSION';
 describe('provisionEslint', () => {
 
   it('returns an object with `package.json`.`contents` function', () => {
@@ -59,8 +61,8 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.4.0',
-            'eslint-config-strict': '^8.5.0',
+            'eslint': eslintVersion,
+            'eslint-config-strict': eslintVersions['eslint-config-strict'] || 'NO VERSION',
           },
           eslintConfig: {
             extends: [
@@ -80,8 +82,8 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.4.0',
-            'eslint-config-xo': '^0.12.0',
+            'eslint': eslintVersion,
+            'eslint-config-xo': eslintVersions['eslint-config-xo'] || 'NO VERSION',
           },
           eslintConfig: {
             extends: [
@@ -101,8 +103,8 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.4.0',
-            'eslint-config-xo': '^0.12.0',
+            'eslint': eslintVersion,
+            'eslint-config-xo': eslintVersions['eslint-config-xo'] || 'NO VERSION',
           },
           eslintConfig: {
             extends: [
@@ -122,7 +124,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.4.0',
+            'eslint': eslintVersion,
             'eslint-config-foo': '^1.2.3',
           },
           eslintConfig: {
@@ -152,7 +154,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.4.0',
+            'eslint': eslintVersion,
           },
           eslintConfig: {
             rules: {
@@ -177,7 +179,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.4.0',
+            'eslint': eslintVersion,
           },
           eslintConfig: {
             extends: [],
@@ -200,7 +202,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.4.0',
+            'eslint': eslintVersion,
           },
           eslintConfig: {
             extends: [],
@@ -224,7 +226,7 @@ describe('provisionEslint', () => {
             src: 'src',
           },
           devDependencies: {
-            'eslint': '^2.4.0',
+            'eslint': eslintVersion,
           },
           eslintConfig: {
             extends: [],

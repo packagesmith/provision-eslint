@@ -1,17 +1,19 @@
 #!/usr/bin/env node
 import defaultsDeep from 'lodash.defaultsdeep';
+import { devDependencies as eslintVersions } from '../package.json';
 import jsonFile from 'packagesmith.formats.json';
 import { runProvisionerSet } from 'packagesmith';
 import sortPackageJson from 'sort-package-json';
+const eslintVersion = eslintVersions.eslint;
 const presetOptions = {
-  'strict': '^8.5.0',
-  'xo': '^0.12.0',
-  'google': '^0.4.0',
-  'standard': '^5.1.0',
-  'airbnb': '^6.1.0',
-  'semistandard': '^5.0.1',
-  'defaults': '^9.0.0',
-  'strongloop': '^1.0.2',
+  'strict': eslintVersions['eslint-config-strict'],
+  'xo': eslintVersions['eslint-config-xo'],
+  'google': eslintVersions['eslint-config-google'],
+  'standard': eslintVersions['eslint-config-standard'],
+  'airbnb': eslintVersions['eslint-config-airbnb'],
+  'semistandard': eslintVersions['eslint-config-semistandard'],
+  'defaults': eslintVersions['eslint-config-defaults'],
+  'strongloop': eslintVersions['eslint-config-strongloop'],
 };
 export function provisionEslint({
   eslintConfig = false,
@@ -41,7 +43,7 @@ export function provisionEslint({
             total[`eslint-config-${ preset.replace(/^eslint-config/, '') }`] = chosenPresets[preset];
             return total;
           }, {});
-        devDependencies.eslint = '^2.4.0';
+        devDependencies.eslint = eslintVersion;
         const packageJson = {
           eslintConfig: eslintConfig || {
             extends: Object.keys(chosenPresets).map((preset) => preset.replace(/^eslint-config/, '')),
