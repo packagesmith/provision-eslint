@@ -47,7 +47,7 @@
     "extends": "strict"
   },
   "dependencies": {
-    "lodash.defaultsdeep": "^4.3.5",
+    "lodash.defaultsdeep": "^4.5.1",
     "packagesmith": "^1.1.2",
     "packagesmith.formats.json": "^1.0.1",
     "semver-addons": "^1.0.0",
