@@ -63,7 +63,7 @@
     "eslint": "^2.8.0",
     "eslint-config-airbnb": "^6.2.0",
     "eslint-config-defaults": "^9.0.0",
-    "eslint-config-google": "^0.4.0",
+    "eslint-config-google": "^0.7.0",
     "eslint-config-semistandard": "^6.0.2",
     "eslint-config-standard": "^5.1.0",
     "eslint-config-strict": "^8.5.1",
